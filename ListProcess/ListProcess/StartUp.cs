@@ -73,8 +73,8 @@ namespace ListProcess
                         Console.WriteLine("Error: invalid command");
                         break;
                 }
-
             }
+
             Console.WriteLine("Finished");
         }
     }
