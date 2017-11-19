@@ -21,8 +21,66 @@ namespace ListProcess
 
                 string command = commArgs[0];
 
-                switch (command)
+                switch (command.ToLower())
                 {
+                    case "append":
+                        if (commArgs.Length==2)
+                        {
+                            string stringToAppend = commArgs[1];
+
+                            initial.Add(stringToAppend);
+                            Console.WriteLine(string.Join(" ",initial));
+                        }
+                        else
+                        {
+                            Console.WriteLine("Error: invalid command parameters");
+                        }
+                        break;
+
+                    case "prepend":
+                        if (commArgs.Length == 2)
+                        {
+                            string stringToPrepend = commArgs[1];
+
+                            initial.Insert(0, stringToPrepend);
+                            Console.WriteLine(string.Join(" ",initial));
+                        }
+                        else
+                        {
+                            Console.WriteLine("Error: invalid command parameters");
+                        }
+                        break;
+
+                    case "roll":
+                        if (commArgs.Length==2)
+                        {
+                            if (commArgs[1]=="left")
+                            {
+                                string temp = initial.First();
+                                initial.RemoveAt(0);
+                                initial.Add(temp);
+                                Console.WriteLine(string.Join(" ",initial));
+                            }
+                            else if (commArgs[1]=="right")
+                            {
+                                string temp = initial.Last();
+                                initial.RemoveAt(initial.Count-1);
+                                initial.Insert(0,temp) ;
+                                Console.WriteLine(string.Join(" ", initial));
+                            }
+                            else
+                            {
+                                Console.WriteLine("Error: invalid command");
+                            }
+                        }
+
+                        else
+                        {
+                            Console.WriteLine("Error: invalid command parameters");
+                        }
+
+                        break;
+
                     case "end":
                         if(commArgs.Length > 1)
                         {
